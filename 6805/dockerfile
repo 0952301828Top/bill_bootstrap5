@@ -1,0 +1,16 @@
+FROM alpine:latest
+
+# ติดตั้ง Python 3 และ pip
+RUN apk add --no-cache python3 py3-pip
+
+# คัดลอกไฟล์จากเครื่องไปยัง container
+COPY . /6805
+
+# ตั้ง working directory
+WORKDIR /6805
+
+# เปิดพอร์ตที่ใช้สำหรับรันเว็บเซิร์ฟเวอร์
+EXPOSE 266
+
+# รัน HTTP server ที่พอร์ต 6805
+CMD ["python3", "-m", "http.server", "6805"]

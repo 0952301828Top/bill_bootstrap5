@@ -1,0 +1,471 @@
+       
+       /* สไตล์เดิมจากไฟล์ 
+       img {
+    display: block;
+    margin: 24px auto;
+    max-width: 100%;
+    height: 800px;*/
+
+    /* Modern look 
+    border-radius: 12px;
+    box-shadow: 
+        0 10px 25px rgba(0, 0, 0, 0.15),
+        0 4px 10px rgba(0, 0, 0, 0.08);
+
+    background-color: #fff;
+    padding: 8px;
+*/
+    /* Smooth interaction 
+    transition: 
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+*/
+/* Hover effect 
+img:hover {
+    transform: scale(1.02);
+    box-shadow: 
+        0 18px 40px rgba(0, 0, 0, 0.2),
+        0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+        
+        body {
+            font-family: 'Prompt', sans-serif;
+            background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+            margin: 0;
+            padding: 30px;
+            min-height: 100vh;
+            color: #333;
+        }
+        */
+        /* เพิ่มสไตล์ใหม่ */
+        
+        /* คอนเทนเนอร์หลัก 
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+        }
+        */
+        /* ฮีโร่เฮดเดอร์ 
+        .hero-header {
+            background: linear-gradient(to right, #1a6bcc, #0a4d9c);
+            color: white;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+        
+        .hero-header::after {
+            content: "";
+            position: absolute;
+            bottom: -80px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a6bcc;
+            font-size: 28px;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .logo-text h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0 0 5px 0;
+        }
+        
+        .logo-text p {
+            margin: 0;
+            opacity: 0.9;
+            font-size: 14px;
+        }
+        
+        .invoice-header-info {
+            text-align: right;
+        }
+        
+        .invoice-number {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 8px 15px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+        
+        .invoice-date {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        */
+        /* การ์ดข้อมูลด่วน 
+        .quick-info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            background: #f8fafc;
+        }
+        
+        .info-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid #1a6bcc;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .info-card h3 {
+            margin: 0 0 15px 0;
+            color: #1a6bcc;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .info-card h3 i {
+            font-size: 20px;
+        }
+        
+        .info-card p {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .info-card .amount {
+            color: #e63946;
+            font-size: 32px;
+            margin: 10px 0;
+        }
+        
+        .info-card .subtext {
+            font-size: 14px;
+            color: #666;
+            margin-top: 8px;
+        }*/
+        
+        /* พื้นที่แสดงใบแจ้งค่าไฟฟ้า 
+        .bill-display-area {
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .bill-display-area strong {
+            display: block;
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+            background: #f0f7ff;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 5px solid #1a6bcc;
+        }
+        
+        .bill-image-container {
+            position: relative;
+            margin: 20px 0;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+        
+        .bill-image-container:hover {
+            transform: scale(1.005);
+        }
+        
+        .bill-image-container img {
+            transition: transform 0.5s ease;
+        }
+        
+        .bill-image-container:hover img {
+            transform: scale(1.02);
+        }*/
+        
+        /* ปุ่มควบคุม
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .control-btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(to right, #1a6bcc, #0a4d9c);
+            color: white;
+            font-family: 'Prompt', sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(26, 107, 204, 0.3);
+        }
+        
+        .control-btn:hover {
+            background: linear-gradient(to right, #0a4d9c, #083a7a);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(26, 107, 204, 0.4);
+        }
+        
+        .control-btn.secondary {
+            background: #f0f4f8;
+            color: #333;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .control-btn.secondary:hover {
+            background: #e1e7ef;
+        }
+         */
+        /* ปุ่มลอย */
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+        
+        .floating-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(to right, #1a6bcc, #0a4d9c);
+            color: white;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .floating-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* โหมดมืด */
+        body.dark-mode {
+            background: linear-gradient(135deg, #121212 0%, #1e1e1e 100%);
+            color: #f0f0f0;
+        }
+        
+        body.dark-mode .container {
+            background: #1e1e1e;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+        
+        body.dark-mode .info-card {
+            background: #252525;
+            color: #f0f0f0;
+        }
+        
+        body.dark-mode .bill-display-area strong {
+            background: #2a2a2a;
+            color: #f0f0f0;
+        }
+        
+        /* เอฟเฟกต์พิเศษ 
+        .highlight {
+            animation: highlight 2s ease;
+        }
+        
+        @keyframes highlight {
+            0% { background-color: transparent; }
+            50% { background-color: rgba(255, 255, 0, 0.3); }
+            100% { background-color: transparent; }
+        }*/
+        
+        /* ปรับปรุง responsive
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            
+            .hero-header {
+                padding: 20px;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .invoice-header-info {
+                text-align: center;
+            }
+            
+            .quick-info-cards {
+                padding: 20px;
+                grid-template-columns: 1fr;
+            }
+            
+            .controls {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .control-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .floating-buttons {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            img {
+                height: auto;
+                max-height: 600px;
+            }
+        } */
+        
+        /* การแจ้งเตือน */
+        .notification {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: linear-gradient(to right, #20c997, #17a589);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 2000;
+            transform: translateX(400px);
+            transition: transform 0.5s ease;
+            max-width: 350px;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+        
+        .notification.warning {
+            background: linear-gradient(to right, #ffc107, #e0a800);
+        }
+        
+        /* โหลดดิ้ง 
+        .loader {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 3000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+        }
+        
+        .loader.show {
+            display: flex;
+        }
+        
+        .spinner {
+            width: 70px;
+            height: 70px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #1a6bcc;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }*/
+        
+        /* แถวที่เน้นข้อมูลสำคัญ 
+        .important-row {
+            background: linear-gradient(to right, rgba(255, 245, 204, 0.5), rgba(255, 235, 153, 0.3));
+            border-left: 4px solid #ffc107;
+            padding: 12px;
+            margin: 20px 0;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+        */
+        /* สไตล์เพิ่มเติมสำหรับเนื้อหาเดิม
+        p {
+            margin: 20px 0;
+            line-height: 1.6;
+        }
+        
+        strong {
+            color: #1a6bcc;
+        } */

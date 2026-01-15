@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ใบแจ้งค่าไฟฟ้า | PEA</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Prompt', sans-serif;
+            background-color: #f4f6f9;
+        }
+        .bill-image {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+      
+    </style>
+</head>
+
+<body>
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+
+            <!-- Card ใบแจ้งค่าไฟ -->
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4 class="mb-0">
+                        <i class="fas fa-file-invoice"></i> ใบแจ้งค่าไฟฟ้า
+                    </h4>
+                </div>
+
+                <div class="card-body text-center">
+                    <img src="page_1.jpg" alt="ใบแจ้งค่าไฟฟ้า หน้า 1" class="bill-image mb-4">
+
+                    <!-- ปุ่มควบคุม -->
+                    <div class="d-flex flex-wrap justify-content-center gap-2">
+                        <button class="btn btn-outline-primary" id="zoomInBtn">
+                            <i class="fas fa-search-plus"></i> ขยาย
+                        </button>
+                        <button class="btn btn-outline-primary" id="zoomOutBtn">
+                            <i class="fas fa-search-minus"></i> ย่อ
+                        </button>
+                        <button class="btn btn-success" id="downloadBtn">
+                            <i class="fas fa-download"></i> ดาวน์โหลด PDF
+                        </button>
+                        <button class="btn btn-secondary" id="printBtn">
+                            <i class="fas fa-print"></i> พิมพ์
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+    
+    <!-- ปุ่มลอย -->
+    <div class="floating-buttons">
+        <button class="floating-btn" id="darkModeBtn" title="สลับโหมดมืด/สว่าง">
+            <i class="fas fa-moon"></i>
+        </button>
+        <button class="floating-btn" id="scrollTopBtn" title="เลื่อนขึ้นด้านบน">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        <button class="floating-btn" id="notificationBtn" title="แสดงการแจ้งเตือน">
+            <i class="fas fa-bell"></i>
+        </button>
+    </div>
+    
+    <!-- การแจ้งเตือน -->
+    <div class="notification" id="paymentNotification">
+        <i class="fas fa-info-circle"></i>
+        <div>
+            <strong>แจ้งเตือนการชำระเงิน</strong><br>
+            กำหนดชำระค่าไฟฟ้าวันที่ 6 มิ.ย. 68
+        </div>
+        <button onclick="closeNotification()" style="background:none;border:none;color:white;cursor:pointer;margin-left:10px;">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    
+    <!-- ตัวโหลด -->
+    <div class="loader" id="loader">
+        <div class="spinner"></div>
+        <p>กำลังประมวลผล...</p>
+    </div>
+
+    <script src="scripts.js"></script>
+
+    
+</body>
+</html>
