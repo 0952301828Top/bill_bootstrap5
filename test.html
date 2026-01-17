@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ใบแจ้งค่าไฟฟ้า - PEA Copy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pea-purple: #6a3a89; /* สีม่วงหลัก */
+            --pea-purple-light: #eaddf0; /* สีม่วงอ่อนหัวตาราง */
+            --pea-bg-header-right: #eaddf0;
+            --pea-yellow-light: #fdf5d3; /* สีเหลืองอ่อนพื้นหลังยอดเงิน */
+            --pea-history-header: #eee5cd; /* สีเบจหัวตารางประวัติ */
+            --pea-red: #d52b1e;
+            --text-color: #333;
+            --border-white: 1px solid #fff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-print-color-adjust: exact; /* บังคับให้พิมพ์สีพื้นหลัง */
+            print-color-adjust: exact;
+        }
+
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background-color: #555; /* พื้นหลังนอกกระดาษ */
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            background-color: #fff;
+            padding: 30px 40px;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+
+        /* --- Header Section --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .header-left {
+            width: 60%;
+        }
+
+        .logo-row {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .logo-placeholder {
+            width: 70px;
+            height: 70px;
+            margin-right: 15px;
+            position: relative;
+        }
+        
+        /* สร้าง Logo วงกลมจำลอง */
+        .logo-circle {
+            width: 100%;
+            height: 100%;
+            background-color: var(--pea-purple);
+            border-radius: 50%;
+            border: 2px solid #e0c56b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 10px;
+            flex-direction: column;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        .logo-circle::after {
+            content: "";
+            position: absolute;
+            top: 5px; left: 5px; right: 5px; bottom: 5px;
+            border: 1px solid white;
+            border-radius: 50%;
+        }
+
+        .org-name {
+            color: var(--pea-purple);
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+        .org-sub {
+            color: var(--pea-purple);
+            font-size: 10px;
+            font-weight: 500;
+        }
+
+        .bill-title {
+            font-size: 20px;
+            font-weight: 500; /* Regular/Medium */
+            color: #000;
+            margin-bottom: 2px;
+        }
+        
+        .smart-invoice {
+            font-size: 12px;
+            color: #444;
+            margin-bottom: 15px;
+        }
+        .smart-invoice span { color: var(--pea-red); }
+
+        .user-address p {
+            font-size: 12px;
+            line-height: 1.4;
+            margin-bottom: 2px;
+        }
+
+        /* --- Header Right Table --- */
+        .header-right {
+            width: 38%;
+        }
+
+        .doc-meta {
+            text-align: right;
+            font-size: 8px;
+            color: #666;
+            margin-bottom: 4px;
+        }
+
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+        }
+
+        .summary-table td {
+            padding: 5px 8px;
+            border-bottom: 2px solid #fff; /* เส้นขาวคั่น */
+        }
+
+        .bg-purple-light { background-color: var(--pea-purple-light); }
+        .bg-purple-dark { background-color: #dccce5; } /* สีเข้มกว่านิดนึง */
+        .bg-yellow { background-color: #f7eac6; }
+        
+        .label-cell {
+            color: #333;
+            vertical-align: top;
+        }
+        .label-en {
+            display: block;
+            font-size: 9px;
+            color: #666;
+            margin-top: 1px;
+        }
+        .val-cell {
+            text-align: right;
+            vertical-align: top;
+            font-weight: 500;
+        }
+        .total-amount {
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .red-text { color: var(--pea-red); font-size: 9px; }
+
+        /* --- Meter Data Strip --- */
+        .meter-strip {
+            display: flex;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .strip-col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .strip-header {
+            background-color: var(--pea-purple-light);
+            color: #4a4a4a;
+            font-size: 10px;
+            font-weight: bold;
+            padding: 4px 2px;
+            border-right: 1px solid #fff;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.1;
+        }
+        
+        .strip-val {
+            background-color: transparent;
+            font-size: 12px;
+            padding: 6px 2px;
+            font-weight: 500;
+        }
+        
+        /* --- Main Grid Layout --- */
+        .main-content {
+            display: grid;
+            grid-template-columns: 28% 44% 25%; /* แบ่งสัดส่วนคอลัมน์ */
+            gap: 15px;
+        }
+
+        /* Common Table Styles */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+        }
+        
+        .data-table th {
+            background-color: var(--pea-purple-light);
+            color: #4a4a4a;
+            font-weight: bold;
+            padding: 6px 2px;
+            font-size: 10px;
+            text-align: center;
+            border-right: 1px solid #fff;
+        }
+        
+        .data-table td {
+            padding: 4px 4px;
+            text-align: right;
+        }
+
+        /* Col 1: Readings */
+        .readings-section {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .unit-label {
+            text-align: left;
+            font-size: 10px;
+            color: var(--pea-purple);
+            margin-top: 5px;
+            margin-bottom: 20px;
+            padding-left: 5px;
+        }
+
+        .calc-summary {
+            margin-top: 10px;
+        }
+
+        .calc-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            margin-bottom: 4px;
+            color: var(--pea-purple);
+            font-weight: 500;
+        }
+        
+        .calc-row.subtotal {
+            border-top: 2px solid var(--pea-purple);
+            padding-top: 4px;
+        }
+        
+        .calc-row.vat {
+            border-bottom: 2px solid var(--pea-purple);
+            padding-bottom: 4px;
+            margin-bottom: 8px;
+        }
+        
+        .calc-row.total-month {
+            font-weight: bold;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .calc-row.grand-total-row {
+            background-color: var(--pea-yellow-light);
+            margin-top: 15px;
+            padding: 8px 10px;
+            color: var(--pea-red);
+            font-weight: bold;
+            font-size: 13px;
+            border-top: 3px solid var(--pea-purple);
+            border-bottom: 3px solid var(--pea-purple);
+            margin-left: -5px; /* Pull visual slightly */
+        }
+
+        /* Col 2: Tariff */
+        .tariff-section table td {
+            border-bottom: 1px solid #f0f0f0;
+            padding: 6px 4px;
+        }
+        
+        .tariff-section th:first-child { text-align: left; padding-left: 10px; }
+        .tariff-section td:first-child { text-align: left; }
+        
+        .total-base-amount-row {
+            background-color: var(--pea-purple-light);
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .points-row {
+            text-align: left;
+            padding: 5px 0;
+            font-size: 11px;
+        }
+
+        .warning-box {
+            margin-top: 60px; /* Push down */
+            border: 1px solid var(--pea-red);
+            padding: 10px;
+            text-align: center;
+            color: var(--pea-red);
+            font-size: 11px;
+            border-radius: 5px;
+            line-height: 1.5;
+            position: relative;
+        }
+        
+        .warning-stars {
+            font-weight: bold;
+        }
+
+        /* Col 3: History & PR */
+        .history-header {
+            background-color: var(--pea-history-header); /* Beige */
+            text-align: center;
+            font-weight: bold;
+            font-size: 11px;
+            padding: 6px;
+            color: #555;
+            border-radius: 4px 4px 0 0;
+        }
+        
+        .usage-history-sub {
+            background-color: var(--pea-history-header);
+            text-align: center;
+            font-size: 9px;
+            color: #777;
+            padding-bottom: 5px;
+            margin-bottom: 2px;
+        }
+
+        .history-table th {
+            background-color: #e6dac3; /* Darker beige */
+            color: #333;
+        }
+        
+        .history-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .pr-box {
+            margin-top: 30px;
+            border: 2px solid var(--pea-purple);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .pr-head {
+            background-color: var(--pea-yellow-light);
+            text-align: center;
+            padding: 6px;
+            font-weight: bold;
+            font-size: 12px;
+            color: #333;
+        }
+        
+        .pr-body {
+            background-color: #fdfaf2;
+            padding: 15px 10px;
+            text-align: center;
+            font-size: 10px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <header>
+            <div class="header-left">
+                <div class="logo-row">
+                    <div class="logo-placeholder">
+                        <div class="logo-circle">
+                            <span>PEA</span>
+                            <span style="font-size: 8px;">Thailand</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="org-name">การไฟฟ้าส่วนภูมิภาค</div>
+                        <div class="org-sub">PROVINCIAL ELECTRICITY AUTHORITY</div>
+                    </div>
+                </div>
+
+                <div class="bill-title">ใบแจ้งค่าไฟฟ้า</div>
+                <div class="smart-invoice">
+                    Smart Invoice <span>(ไม่ใช่ใบเสร็จรับเงิน/ใบกำกับภาษี)</span>
+                </div>
+
+                <div class="user-address">
+                    <p><strong>การไฟฟ้าส่วนภูมิภาคอำเภอหาดใหญ่ โทร.</strong> 0-7480-6113</p>
+                    <p><strong>ชื่อผู้ใช้ไฟฟ้า</strong> นายกัมพล ชาญเชิงพาณิช</p>
+                    <p><strong>สถานที่ใช้ไฟฟ้า</strong> 17 ถ.หมู่บ้านปาล์มสปริงส์ ต.คอหงส์ อ.หาดใหญ่ จ.สงขลา 90110</p>
+                </div>
+            </div>
+
+            <div class="header-right">
+                <div class="doc-meta">#219010513810 *Document Date: 19/05/2568 *Printed: 19-05-2568 20:11:01</div>
+                <table class="summary-table">
+                    <tr class="bg-purple-light">
+                        <td class="label-cell">หมายเลขผู้ใช้ไฟฟ้า<span class="label-en">CA/Ref.No.1</span></td>
+                        <td class="val-cell">020007328623</td>
+                    </tr>
+                    <tr class="bg-purple-dark">
+                        <td class="label-cell">เลขที่ใบแจ้งค่าไฟฟ้า<span class="label-en">Invoice no.</span></td>
+                        <td class="val-cell">219010513810</td>
+                    </tr>
+                    <tr class="bg-yellow">
+                        <td class="label-cell">จำนวนเงิน (บาท)<span class="label-en">Total (Baht)</span></td>
+                        <td class="val-cell total-amount">1,401.00</td>
+                    </tr>
+                    <tr class="bg-yellow">
+                        <td class="label-cell">เลขที่บัญชีธนาคาร/บัตรเครดิต<span class="label-en">Bank Account / Credit Card No.</span></td>
+                        <td class="val-cell">903-403375207016XXXX</td>
+                    </tr>
+                    <tr class="bg-yellow">
+                        <td class="label-cell" style="color:var(--pea-red);">โปรดนำเงินเข้าบัญชีก่อนวันที่<span class="label-en red-text">Please Provide Sufficient Amount Before That Day</span></td>
+                        <td class="val-cell">06 มิถุนายน 2568</td>
+                    </tr>
+                </table>
+            </div>
+        </header>
+
+        <div class="meter-strip">
+            <div class="strip-col">
+                <div class="strip-header">รหัสการไฟฟ้า<br>PEA Code</div>
+                <div class="strip-val">L07101</div>
+            </div>
+            <div class="strip-col">
+                <div class="strip-header">สายจดหน่วย<br>MRU</div>
+                <div class="strip-val">LHAY0268</div>
+            </div>
+            <div class="strip-col">
+                <div class="strip-header">รหัสเครื่องวัด<br>PEA No.</div>
+                <div class="strip-val">20887203</div>
+            </div>
+            <div class="strip-col" style="flex: 0.7;">
+                <div class="strip-header">ประเภท<br>Type</div>
+                <div class="strip-val">1125</div>
+            </div>
+            <div class="strip-col">
+                <div class="strip-header">วันที่อ่านหน่วย<br>Meter Reading Date</div>
+                <div class="strip-val">18/05/2568</div>
+            </div>
+            <div class="strip-col">
+                <div class="strip-header">ประจำเดือน<br>Bill Period</div>
+                <div class="strip-val">05/2568</div>
+            </div>
+            <div class="strip-col">
+                <div class="strip-header">แรงดัน<br>Voltage Level</div>
+                <div class="strip-val">&lt;22 KV</div>
+            </div>
+            <div class="strip-col" style="flex: 0.5;">
+                <div class="strip-header">ตัวคูณ<br>Multi</div>
+                <div class="strip-val">-</div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            
+            <div class="readings-section">
+                <table class="data-table">
+                    <tr>
+                        <th style="font-size: 9px;">เลขอ่านครั้งหลัง<br>Recent Reading</th>
+                        <th style="font-size: 9px;">เลขอ่านครั้งก่อน<br>Previous Reading</th>
+                        <th style="font-size: 9px;">จำนวนที่ใช้<br>Consumption Unit</th>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;">60944.000</td>
+                        <td style="text-align: center;">60616.000</td>
+                        <td style="text-align: center;">328.00</td>
+                    </tr>
+                </table>
+                <div class="unit-label">พลังงานไฟฟ้า<br>(หน่วย)</div>
+
+                <div class="calc-summary">
+                    <div class="calc-row">
+                        <span>เงินค่าไฟฟ้าฐาน (Based Amount)</span>
+                        <span>1,263.36</span>
+                    </div>
+                    <div class="calc-row">
+                        <span>ค่า Ft พ.ค.68-ส.ค.68=0.1972 บาท/หน่วย</span>
+                        <span>64.68</span>
+                    </div>
+                    <div class="calc-row">
+                        <span>*ส่วนลด (Discount)</span>
+                        <span style="border-bottom: 1px solid var(--pea-purple); width: 80px; text-align: right;">&nbsp;</span>
+                    </div>
+                    <div class="calc-row subtotal">
+                        <span>รวมเงินค่าไฟฟ้า (Sub Total)</span>
+                        <span>1,328.04</span>
+                    </div>
+                    <div class="calc-row vat">
+                        <span>ภาษีมูลค่าเพิ่ม 7.00 % (VAT)</span>
+                        <span>92.96</span>
+                    </div>
+                    <div class="calc-row total-month">
+                        <span>รวมเงินค่าไฟฟ้าเดือนปัจจุบัน (Total)</span>
+                        <span>1,421.00</span>
+                    </div>
+                    <div class="calc-row">
+                        <span style="font-size: 10px;">ชำระด้วยคะแนนสะสม</span>
+                        <span>-20.00</span>
+                    </div>
+
+                    <div class="calc-row grand-total-row">
+                        <span>รวมเงินทั้งสิ้น (Grand Total)</span>
+                        <span>1,401.00</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tariff-section">
+                <table class="data-table">
+                    <tr>
+                        <th>รายละเอียดค่าไฟฟ้าฐาน<br>Tariff</th>
+                        <th>ราคา/หน่วย<br>(บาท)<br><span style="font-size: 8px; font-weight: normal;">Baht/Unit</span></th>
+                        <th>จำนวนเงิน<br>(บาท)<br><span style="font-size: 8px; font-weight: normal;">Amount (Baht)</span></th>
+                    </tr>
+                    <tr>
+                        <td>(หน่วยที่ 1-150) 150 หน่วย</td>
+                        <td>3.2484</td>
+                        <td>487.26</td>
+                    </tr>
+                    <tr>
+                        <td>(หน่วยที่ 151-400) 178 หน่วย</td>
+                        <td>4.2218</td>
+                        <td>751.48</td>
+                    </tr>
+                    <tr>
+                        <td>ค่าบริการรายเดือน (Service Charge)</td>
+                        <td></td>
+                        <td>24.62</td>
+                    </tr>
+                    <tr class="total-base-amount-row">
+                        <td style="background-color: #dccce5;">รวมเงินค่าไฟฟ้าฐาน (Total Based Amount)</td>
+                        <td style="background-color: #dccce5;"></td>
+                        <td style="background-color: #dccce5;">1,263.36</td>
+                    </tr>
+                </table>
+                <div class="points-row">
+                    ชำระด้วยคะแนนสะสม 20.00บาท
+                </div>
+
+                <div class="warning-box">
+                    <span class="warning-stars">*** กรณีมีค่าไฟฟ้าค้างชำระเดือนก่อน โปรดชำระทันที</span><br>
+                    เนื่องจากถึงกำหนดงดจ่ายไฟ ขออภัยหากชำระเงินแล้ว
+                </div>
+            </div>
+
+            <div class="history-section">
+                <div class="history-header">ประวัติการใช้ไฟฟ้า</div>
+                <div class="usage-history-sub">Usage History</div>
+                <table class="data-table history-table">
+                    <tr>
+                        <th>วันที่อ่านหน่วย<br>Meter Reading Date</th>
+                        <th>จำนวนหน่วยที่ใช้<br>Consuption Unit</th>
+                    </tr>
+                    <tr><td>17/04/68</td><td>316.00</td></tr>
+                    <tr><td>18/03/68</td><td>296.00</td></tr>
+                    <tr><td>15/02/68</td><td>227.00</td></tr>
+                    <tr><td>18/01/68</td><td>267.00</td></tr>
+                    <tr><td>18/12/67</td><td>217.00</td></tr>
+                    <tr><td>17/11/67</td><td>262.00</td></tr>
+                </table>
+
+                <div class="pr-box">
+                    <div class="pr-head">ข้อความประชาสัมพันธ์</div>
+                    <div class="pr-body">
+                        รับคะแนนพิเศษ สูงสุด 200 คะแนน กับ Watt-D Point ได้แล้ววันนี้<br>
+                        เพียงสมัคร Watt-D Point บน PEA Smart Plus ก่อนชำระค่าไฟฟ้า<br>
+                        ชำระค่าไฟ พ.ค.-มิ.ย. ภายในกำหนดผ่านทางออนไลน์ รับเพิ่ม 50 คะแนน<br>
+                        รีบมาสมัคร สะสม และใช้คะแนนแลกเงินคืนค่าไฟฟ้ากัน
+                    </div>
+                </div>
+            </div>
+
+        </div> </div>
+
+</body>
+</html>
